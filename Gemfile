@@ -62,6 +62,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'shoulda-matchers', require: false
+  gem 'mongoid-rspec', '~> 2.1.0'
 end
 
 group :development, :test do
