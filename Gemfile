@@ -47,6 +47,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
 group :development do
+  gem 'rails_layout'
+
   gem 'quiet_assets'
   gem "growl"
   gem "guard"
