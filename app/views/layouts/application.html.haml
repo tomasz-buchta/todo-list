@@ -13,5 +13,6 @@
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+      .large-9.columns
+        = render 'layouts/messages'
+        = yield
