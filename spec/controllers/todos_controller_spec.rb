@@ -24,11 +24,11 @@ RSpec.describe TodosController, type: :controller do
   # Todo. As you add validations to Todo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.attributes_for(:todo)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.attributes_for(:todo,:without_title)
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe TodosController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryGirl.attributes_for(:todo,title: 'Updated title')
       }
 
       it "updates the requested todo" do
         todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => new_attributes}, valid_session
         todo.reload
-        skip("Add assertions for updated state")
+        expect(todo.title).to eq('Updated title')
       end
 
       it "assigns the requested todo as @todo" do
