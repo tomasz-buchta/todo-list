@@ -10,6 +10,8 @@ gem 'bson_ext'
 
 gem 'responders'
 
+gem 'angularjs-rails'
+
 gem 'therubyracer'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -79,4 +81,7 @@ group :development, :test do
   # Rspec tests
   gem "rspec-rails"
   gem 'factory_girl_rails'
+  gem "capybara"
+  gem "database_cleaner"
+  gem "selenium-webdriver"
 end
