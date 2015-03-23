@@ -1,16 +1,16 @@
 %header.row
-  %h1.text-center.medium-offset-2.medium-6.columns Find Recipes
+  %h1.text-center.medium-offset-3.medium-6.columns Find Recipes
 %section.row
   %form
     .form-group.columns.medium-6.small-offset-3
-      %label.sr-only{:for => "keywords"} Keywords
-      %input.form-control{:autofocus => "", :placeholder => "Recipe name, e.g. Baked Potato", :type => "text"}/
+      %input.large-12{'ng-model':'keywords',type:'text'}
     .form-group.medium-6.small-offset-3.text-center
-      %button.btn.btn-primary.btn-lg Search
+      %button.btn.btn-primary.btn-lg{'ng-click':'search(keywords)'} Search
 %hr/
-%section.row
+%section.row{'ng-if':'todos'}
   %h1.text-center Results
-  .row
-    %h3.medium-6.columns.small-offset-2 Baked Potato
-    %button.button.info Edit
-    %button.button.alert Delete
+  %ul.no-bullet
+    %li{'ng-repeat':'todo in todos'}
+      %h3.medium-6.columns.small-offset-2 {{todo.name}}
+      %button.button.info.tiny Edit
+      %button.button.alert.tiny Delete

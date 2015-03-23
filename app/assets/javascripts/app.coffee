@@ -1,10 +1,10 @@
-receta = angular.module('receta',[
+todoer = angular.module('todoer',[
   'templates',
   'ngRoute',
   'controllers',
 ])
 
-receta.config([ '$routeProvider',
+todoer.config([ '$routeProvider',
   ($routeProvider)->
     $routeProvider
       .when('/',
@@ -14,6 +14,25 @@ receta.config([ '$routeProvider',
 ])
 
 controllers = angular.module('controllers',[])
-controllers.controller("RecipesController", [ '$scope',
-  ($scope)->
+todos = [
+  {
+    id: 1
+    name: 'Baked Potato w/ Cheese'
+  },
+  {
+    id: 2
+    name: 'Garlic Mashed Potatoes',
+  },
+  {
+    id: 3
+    name: 'Potatoes Au Gratin',
+  },
+  {
+    id: 4
+    name: 'Baked Brussel Sprouts'
+  },
+]
+controllers.controller("RecipesController", [ '$scope', '$routeParams', '$location',
+  ($scope,$routeParams,$location)->
+    $scope.todos = todos
 ])
