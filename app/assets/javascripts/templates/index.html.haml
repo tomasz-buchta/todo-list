@@ -1,16 +1,15 @@
 %header.row
-  %h1.text-center.medium-offset-3.medium-6.columns Find Recipes
+  %h1.text-center.medium-offset-3.medium-6.columns Add Todo
 %section.row
   %form
     .form-group.columns.medium-6.small-offset-3
       %input.large-12{'ng-model':'keywords',type:'text'}
+      %textarea.large-12{type:'text'}
     .form-group.medium-6.small-offset-3.text-center
-      %button.btn.btn-primary.btn-lg{'ng-click':'search(keywords)'} Search
+      %button.btn.btn-primary.btn-lg Add
 %hr/
-%section.row{'ng-if':'todos'}
-  %h1.text-center Results
-  %ul.no-bullet
-    %li{'ng-repeat':'todo in todos'}
-      %h3.medium-6.columns.small-offset-2 {{todo.title}}
-      %button.button.info.tiny Edit
-      %button.button.alert.tiny Delete
+.row
+  .large-4.medium-4.columns{'ng-repeat':'todo in todos'}
+    %ul.pricing-table.active-tb.shadow.mrgn-20-top
+      %li.title {{todo.title}}
+      %li.bullet-item {{todo.description}}
