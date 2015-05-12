@@ -38,7 +38,8 @@ RSpec.describe TodosController, type: :controller do
 
   describe "GET #index" do
     it "assigns all todos as @todos" do
-      todo = Todo.create! valid_attributes
+      binding.pry
+      todo = Todo.create valid_attributes
       get :index, {}, valid_session
       expect(assigns(:todos)).to eq([todo])
     end
