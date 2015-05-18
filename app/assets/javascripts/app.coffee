@@ -21,9 +21,3 @@ controllers.controller 'TodosController',['$scope','$http',($scope,$http)->
     $scope.todos = data
   )
 ]
-
-todoer.factory('Todos',['$resource',($resource)->
-  $resource('/todos.json',{},{
-    query: {method: 'GET',isArray: true}
-  })
-])
