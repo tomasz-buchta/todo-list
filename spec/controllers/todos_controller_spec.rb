@@ -35,10 +35,9 @@ RSpec.describe TodosController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # TodosController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
+  let(:todo) {FactoryGirl.create(:todo)}
   describe "GET #index" do
     it "assigns all todos as @todos" do
-      todo = Todo.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:todos)).to eq([todo])
     end
@@ -46,7 +45,6 @@ RSpec.describe TodosController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested todo as @todo" do
-      todo = Todo.create! valid_attributes
       get :show, {:id => todo.to_param}, valid_session
       expect(assigns(:todo)).to eq(todo)
     end
@@ -61,7 +59,6 @@ RSpec.describe TodosController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested todo as @todo" do
-      todo = Todo.create! valid_attributes
       get :edit, {:id => todo.to_param}, valid_session
       expect(assigns(:todo)).to eq(todo)
     end
@@ -71,7 +68,7 @@ RSpec.describe TodosController, type: :controller do
     context "with valid params" do
       it "creates a new Todo" do
         expect {
-          post :create, {:todo => valid_attributes}, valid_session
+          post :create, :todo => valid_attributes
         }.to change(Todo, :count).by(1)
       end
 
@@ -107,20 +104,17 @@ RSpec.describe TodosController, type: :controller do
       }
 
       it "updates the requested todo" do
-        todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => new_attributes}, valid_session
         todo.reload
         expect(todo.title).to eq('Updated title')
       end
 
       it "assigns the requested todo as @todo" do
-        todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => valid_attributes}, valid_session
         expect(assigns(:todo)).to eq(todo)
       end
 
       it "redirects to the todo" do
-        todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => valid_attributes}, valid_session
         expect(response).to redirect_to(todo)
       end
@@ -128,13 +122,11 @@ RSpec.describe TodosController, type: :controller do
 
     context "with invalid params" do
       it "assigns the todo as @todo" do
-        todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => invalid_attributes}, valid_session
         expect(assigns(:todo)).to eq(todo)
       end
 
       it "re-renders the 'edit' template" do
-        todo = Todo.create! valid_attributes
         put :update, {:id => todo.to_param, :todo => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +135,14 @@ RSpec.describe TodosController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested todo" do
-      todo = Todo.create! valid_attributes
+      todo = FactoryGirl.create(:todo)
       expect {
-        delete :destroy, {:id => todo.to_param}, valid_session
+        delete :destroy, {:id => todo.id}, valid_session
       }.to change(Todo, :count).by(-1)
     end
 
     it "redirects to the todos list" do
-      todo = Todo.create! valid_attributes
+      todo = FactoryGirl.create(:todo)
       delete :destroy, {:id => todo.to_param}, valid_session
       expect(response).to redirect_to(todos_url)
     end
