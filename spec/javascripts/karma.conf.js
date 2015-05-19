@@ -27,6 +27,7 @@ module.exports = function(config){
             'vendor/assets/bower_components/angular-route/angular-route.js',
             'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
             'app/assets/javascripts/angular/**/*.coffee',
+            'app/assets/javascripts/templates/**/*.html',
             'spec/javascripts/unit/**/*.js'
         ],
 
@@ -40,7 +41,8 @@ module.exports = function(config){
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-jasmine',
-            'karma-coffee-preprocessor'
+            'karma-coffee-preprocessor',
+            'karma-ng-html2js-preprocessor'
         ],
 
         junitReporter : {
