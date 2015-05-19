@@ -9,7 +9,7 @@ describe('todoer controllers', function() {
 
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/todos.json').
+            $httpBackend.expectGET('../todos.json').
                 respond([{title: 'todo 2'}]);
 
             scope = $rootScope.$new();
@@ -17,6 +17,8 @@ describe('todoer controllers', function() {
         }));
 
         it('should set the todo', function() {
+            expect(scope.todos).toBeUndefined();
+            $httpBackend.flush();
             expect(scope.todos).toEqual([{title: 'todo 2'}]);
         });
     });
