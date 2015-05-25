@@ -1,6 +1,6 @@
 todoer = angular.module('todoer',[
-  'templates',
   'ngRoute',
+  'templates',
   'controllers',
 ])
 
