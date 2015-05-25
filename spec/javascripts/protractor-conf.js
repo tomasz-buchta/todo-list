@@ -11,7 +11,6 @@ exports.config = {
     },
 
     chromeOnly: true,
-
     baseUrl: 'http://localhost:3000/angular/index',
 
     framework: 'jasmine',
