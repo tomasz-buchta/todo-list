@@ -1,5 +1,5 @@
 !!!
-%html
+%html{'ng-app':'todoer'}
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Angular Mongo Todo List'

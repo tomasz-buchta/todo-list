@@ -1,8 +1,9 @@
+require('coffee-script/register');
 exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
-        'e2e/*.js'
+        'e2e/*.coffee'
     ],
 
     capabilities: {
@@ -11,7 +12,7 @@ exports.config = {
 
     chromeOnly: true,
 
-    baseUrl: 'http://localhost:8000/',
+    baseUrl: 'http://localhost:3000/angular/index',
 
     framework: 'jasmine',
 
