@@ -8,5 +8,5 @@ describe('Todos list view', ->
   it 'should render the todos list page', ->
     todosList = element.all(By.repeater('todo in todos'))
     keywords = element(By.model('keyword'))
-    expect(todosList.count()).toBe(4)
+    expect(todosList.count()).toBe(15)
 )
