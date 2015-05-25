@@ -1,5 +1,13 @@
 describe('todoer controllers', function() {
 
+    beforeEach(function(){
+        this.addMatchers({
+            toEqualData: function(expected) {
+                return angular.equals(this.actual, expected);
+            }
+        });
+    });
+
     beforeEach(module('todoer'));
 
     describe('TodosController', function(){
@@ -17,9 +25,8 @@ describe('todoer controllers', function() {
         }));
 
         it('should set the todo', function() {
-            expect(scope.todos).toBeUndefined();
             $httpBackend.flush();
-            expect(scope.todos).toEqual([{title: 'todo 2'}]);
+            expect(scope.todos).toEqualData([{title: 'todo 2'}]);
         });
     });
 });
