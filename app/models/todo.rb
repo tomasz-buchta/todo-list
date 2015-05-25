@@ -7,7 +7,7 @@ class Todo
 
   validates :title, presence: true
   validates :completion, presence: true
-  validates :completion, numericality: {greater_than: 0,less_than: 100}
+  validates :completion, numericality: {greater_than: 0,less_than_or_equal_to: 100}
 
   after_initialize :add_created_at
 
