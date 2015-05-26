@@ -1,5 +1,5 @@
 controllers = angular.module('controllers',[])
-controllers.controller 'TodosController',['$scope','Todo',($scope,Todo)->
-  $scope.todos = Todo.query()
+controllers.controller 'TodoCtrl',['$scope','Todo',($scope,Todo)->
   $scope.orderProp = 'title'
+  $scope.todos = Todo.query()
 ]

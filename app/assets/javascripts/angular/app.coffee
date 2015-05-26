@@ -11,8 +11,15 @@ todoer = angular.module('todoer',[
 todoer.config([ '$routeProvider',
   ($routeProvider)->
     $routeProvider
-      .when('/',
+      .when('/todos',
         templateUrl: "index.html"
-        controller: 'TodosController'
+        controller: 'TodoCtrl'
       )
+      .when('/todos/:Id',
+        templateUrl: "todo.html"
+        controller: "TodoDetailCtrl"
+      )
+      .otherwise(
+        redirectTo: '/todos'
+    )
 ])
