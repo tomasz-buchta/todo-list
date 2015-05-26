@@ -1,7 +1,7 @@
-<div class="row">
-    <div class="large-12 columns">
-        Title:          {{todo.title}}
-        description:    {{todo.description}}
-        completion:     {{todo.completion}}
+<div class="large-4 columns">
+    <h1 class="title">{{todo.title}}</h1>
+    <div class="description">{{todo.description}}</div>
+    <div class="progress large-8 round">
+        <span class="meter" style="width: {{todo.completion}}"></span>
     </div>
 </div>
