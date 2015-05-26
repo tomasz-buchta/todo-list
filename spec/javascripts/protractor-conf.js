@@ -1,4 +1,4 @@
-require('coffee-script/register');
+require('coffee-script');
 exports.config = {
     allScriptsTimeout: 11000,
 
