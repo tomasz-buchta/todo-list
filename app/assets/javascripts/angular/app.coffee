@@ -12,11 +12,11 @@ todoer.config([ '$routeProvider',
   ($routeProvider)->
     $routeProvider
       .when('/todos',
-        templateUrl: "index.html"
+        templateUrl: "list.html"
         controller: 'TodoCtrl'
       )
       .when('/todos/:Id',
-        templateUrl: "todo.html"
+        templateUrl: "detail.html"
         controller: "TodoDetailCtrl"
       )
       .otherwise(
