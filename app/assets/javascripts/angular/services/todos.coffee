@@ -1,7 +1,8 @@
 todoerServices = angular.module('services',['ngResource'])
 
 todoerServices.factory('Todo',['$resource',($resource)->
-  $resource('../todos/:todoId.json',{},{
-    query: {method:'GET', params:{todoId:''}, isArray:true}
+  $resource('../todos/:Id.json',{Id:"@Id"},{
+    query: {method:'GET', params:{Id:''}, isArray:true},
+    update: {method: 'PUT'}
   })
 ])
