@@ -14,4 +14,12 @@ describe('Todos list view', ->
     expect(todosList.count()).toBe(15)
     keywords.sendKeys('title 2')
     expect(todosList.count()).toBe(1)
+
+  it 'should display detail page of first todo and go back to main page', ->
+    keywords.sendKeys('title 2')
+    expect(todosList.count()).toBe(1)
+    todosList.all(By.css('.pricing-table')).first().click()
+    expect(browser.getLocationAbsUrl()).toBe('/todos/5564072c546f6d6a90010000')
+    element.all(By.css('.button')).first().click()
+    expect(browser.getLocationAbsUrl()).toBe('/todos')
 )
