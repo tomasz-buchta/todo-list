@@ -15,6 +15,10 @@ todoer.config([ '$routeProvider',
         templateUrl: "list.html"
         controller: 'TodoCtrl'
       )
+      .when('/todos/new',
+        templateUrl: 'new.html'
+        controller:  'TodoNewCtrl'
+      )
       .when('/todos/:Id',
         templateUrl: "detail.html"
         controller: "TodoDetailCtrl"
