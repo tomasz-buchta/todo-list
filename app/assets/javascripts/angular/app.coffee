@@ -8,8 +8,8 @@ todoer = angular.module('todoer',[
 
 
 
-todoer.config([ '$routeProvider',
-  ($routeProvider)->
+todoer.config([ '$routeProvider','$httpProvider',
+  ($routeProvider,$httpProvider)->
     $routeProvider
       .when('/todos',
         templateUrl: "list.html"
@@ -26,4 +26,6 @@ todoer.config([ '$routeProvider',
       .otherwise(
         redirectTo: '/todos'
     )
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] =
+      $('meta[name=csrf-token').attr('content')
 ])
