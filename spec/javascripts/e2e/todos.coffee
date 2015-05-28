@@ -19,7 +19,7 @@ describe('Todos list view', ->
     keywords.sendKeys('title 2')
     expect(todosList.count()).toBe(1)
     todosList.all(By.css('.pricing-table')).first().click()
-    expect(browser.getLocationAbsUrl()).toBe('/todos/5564072c546f6d6a90010000')
+    expect(browser.getLocationAbsUrl()).toMatch('/todos/')
     element.all(By.css('.button')).first().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
 )
