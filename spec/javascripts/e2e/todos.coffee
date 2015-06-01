@@ -22,4 +22,16 @@ describe('Todos list view', ->
     expect(browser.getLocationAbsUrl()).toMatch('/todos/')
     element.all(By.css('.button')).first().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
+
+  it 'should add a new todo', ->
+    expect(todosList.count()).toBe(15)
+    element(By.css('.button-new')).click()
+    expect(browser.getLocationAbsUrl()).toBe('/todos/new')
+    element(By.model('todo.title')).sendKeys('test Title')
+    element(By.model('todo.description')).sendKeys('test description')
+    element(By.model('todo.completion')).sendKeys(75)
+    element.all(By.css('input')).last().click()
+    element.all(By.css('.button')).last().click()
+    expect(browser.getLocationAbsUrl()).toBe('/todos')
+    expect(todosList.count()).toBe(16)
 )
