@@ -23,6 +23,10 @@ todoer.config([ '$routeProvider','$httpProvider',
         templateUrl: "detail.html"
         controller: "TodoDetailCtrl"
       )
+      .when('/todos/:Id/edit',
+        templateUrl: 'edit.html'
+        controller:  'TodoEditCtrl'
+      )
       .otherwise(
         redirectTo: '/todos'
     )

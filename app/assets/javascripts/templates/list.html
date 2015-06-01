@@ -16,6 +16,9 @@
             <li class="title">  {{todo.title}}  </li>
             <li class="bullet-item">  {{todo.description}}  </li>
             <li class="bullet-item">  {{todo.completion}}   </li>
+            <li class="bullet-item">
+                <a class="button" href="#/todos/{{todo.id.$oid}}/edit">Edit</a>
+            </li>
         </a>
     </ul>
 </div>

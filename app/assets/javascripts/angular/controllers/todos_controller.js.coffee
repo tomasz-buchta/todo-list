@@ -11,3 +11,8 @@ controllers.controller 'TodoNewCtrl',['$scope','Todo',($scope,Todo) ->
   $scope.addTodo = ->
     Todo.save($scope.todo)
 ]
+controllers.controller 'TodoEditCtrl',['$scope','$routeParams','Todo',($scope,$routeParams,Todo)->
+  todo = $scope.todo = Todo.get({Id:$routeParams.Id})
+  $scope.updateTodo = ->
+    Todo.update(todo: $scope.todo,Id:$routeParams.Id)
+]
