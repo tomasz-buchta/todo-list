@@ -23,7 +23,7 @@ describe('Todos list view', ->
     element.all(By.css('.button')).first().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
 
-  it 'should add a new todo', ->
+  it 'should add a new todo and delete one', ->
     expect(todosList.count()).toBe(15)
     element(By.css('.button-new')).click()
     expect(browser.getLocationAbsUrl()).toBe('/todos/new')
@@ -34,4 +34,8 @@ describe('Todos list view', ->
     element.all(By.css('.button')).last().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
     expect(todosList.count()).toBe(16)
+    element(By.css('.button-delete')).click()
+    alertDialog = browser.switchTo().alert()
+    alertDialog.accept()
+    expect(todosList.count()).toBe(15)
 )
