@@ -18,9 +18,8 @@ describe('Todos list view', ->
   it 'should display detail page of first todo and go back to main page', ->
     keywords.sendKeys('title 2')
     expect(todosList.count()).toBe(1)
-    todosList.all(By.css('.pricing-table')).first().click()
-    expect(browser.getLocationAbsUrl()).toMatch('/todos/')
-    element.all(By.css('.button')).first().click()
+    todosList.all(By.css('.pricing-table a')).first().click()
+    element.all(By.css('.button')).last().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
 
   it 'should add a new todo and delete one', ->
@@ -34,7 +33,7 @@ describe('Todos list view', ->
     element.all(By.css('.button')).last().click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
     expect(todosList.count()).toBe(16)
-    element(By.css('.button-delete')).click()
+    element.all(By.css('.button-delete')).last().click()
     alertDialog = browser.switchTo().alert()
     alertDialog.accept()
     expect(todosList.count()).toBe(15)
