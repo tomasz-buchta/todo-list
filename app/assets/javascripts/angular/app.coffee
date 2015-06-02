@@ -3,7 +3,8 @@ todoer = angular.module('todoer',[
   'templates',
   'controllers',
   'ngResource',
-  'services'
+  'services',
+  'Animations'
 ])
 
 
