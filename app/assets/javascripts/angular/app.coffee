@@ -3,7 +3,9 @@ todoer = angular.module('todoer',[
   'templates',
   'controllers',
   'ngResource',
-  'services'
+  'services',
+  'ngAnimate',
+  'ngFx',
 ])
 
 
@@ -31,5 +33,5 @@ todoer.config([ '$routeProvider','$httpProvider',
         redirectTo: '/todos'
     )
     $httpProvider.defaults.headers.common['X-CSRF-Token'] =
-      $('meta[name=csrf-token').attr('content')
+      $("meta[name='csrf-token']").attr('content')
 ])

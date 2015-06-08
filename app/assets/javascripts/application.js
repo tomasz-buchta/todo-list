@@ -18,6 +18,9 @@
 //= require angular-route/angular-route
 //= require angular-rails-templates
 //= require angular-resource
+//= require angular-animate
+//= require gsap/src/uncompressed/TweenMax
+//= require ngFx
 //= require_tree ./templates
 //= require_tree ./angular
 //= require_tree .

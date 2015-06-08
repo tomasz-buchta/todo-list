@@ -2,4 +2,6 @@ asset 'angular'
 asset 'angular-route'
 asset 'angular-mocks'
 asset 'angular-resource'
+asset 'angular-animate'
+asset 'ngFx'
 # vim: ft=ruby
