@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: '/auth'
   get 'angular/index'
 
-  devise_for :users
+  # devise_for :users
   resources :todos
 
   # The priority is based upon order of creation: first created -> highest priority.
