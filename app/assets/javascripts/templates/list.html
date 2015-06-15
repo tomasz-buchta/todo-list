@@ -15,10 +15,14 @@
         <a href="#/todos/{{todo.id.$oid}}">
             <li class="title">  {{todo.title}}  </li>
             <li class="bullet-item">  {{todo.description}}  </li>
-            <li class="bullet-item">  {{todo.completion}}   </li>
             <li class="bullet-item">
-                <a class="button" href="#/todos/{{todo.id.$oid}}/edit">Edit</a>
-                <a class="button button-delete" href="" ng-click="deleteTodo(todo.id.$oid)">Delete</a>
+                <div class="progress large-8-centered round" ng-class="{success: todo.completion==100}">
+                    <span class="meter" style="width: {{todo.completion}}%"></span>
+                </div>
+            </li>
+            <li class="bullet-item action-buttons">
+                <a class="button tiny" href="#/todos/{{todo.id.$oid}}/edit">Edit</a>
+                <a class="button tiny button-delete" href="" ng-click="deleteTodo(todo.id.$oid)">Delete</a>
             </li>
         </a>
     </ul>

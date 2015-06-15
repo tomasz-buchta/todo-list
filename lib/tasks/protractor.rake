@@ -11,6 +11,7 @@ namespace :protractor do
   task run: :environment do
     system "rake protractor:reset"
     system "rails s -e test -p 3001 --pid tmp/pids/server2.pid > /dev/null &"
+    sleep 5
     system "protractor spec/javascripts/protractor-conf.js"
     system "kill -9 $(cat tmp/pids/server2.pid) > /dev/null"
   end
