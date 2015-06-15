@@ -10,7 +10,7 @@ describe('todoer controllers', function() {
 
     beforeEach(module('todoer'));
 
-    describe('TodosController', function(){
+    describe('TodoCtrl', function(){
         var scope, ctrl, $httpBackend;
 
 
@@ -21,7 +21,7 @@ describe('todoer controllers', function() {
                 respond([{title: 'todo 2'}]);
 
             scope = $rootScope.$new();
-            ctrl = $controller('TodosController', {$scope: scope});
+            ctrl = $controller('TodoCtrl', {$scope: scope});
         }));
 
         it('should set the todo', function() {
