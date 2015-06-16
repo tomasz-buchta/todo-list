@@ -18,6 +18,10 @@ todoer.config([ '$routeProvider','$httpProvider',
         templateUrl: "list.html"
         controller: 'TodoCtrl'
       )
+      .when('/sign_in',
+        templateUrl: 'user_sessions/new.html'
+        controller: 'UserSessionsCtrl'
+      )
       .when('/todos/new',
         templateUrl: 'new.html'
         controller:  'TodoNewCtrl'
