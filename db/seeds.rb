@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 10.times {FactoryGirl.create(:todo)}
 5.times {FactoryGirl.create(:todo,:completed)}
+
+FactoryGirl.create(:user,email: 'test@example.com')

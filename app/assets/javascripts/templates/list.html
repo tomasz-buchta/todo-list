@@ -27,3 +27,7 @@
         </a>
     </ul>
 </div>
+<ul class="no-bullet">
+    <li ng-show="!user.id"><a ng-href="/sign_in" class="button">Sign in</a></li>
+    <li ng-show="user.id"><a ng-click='signOut()' class="button">Sign out</a></li>
+</ul>

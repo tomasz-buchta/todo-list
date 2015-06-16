@@ -6,6 +6,7 @@ todoer = angular.module('todoer',[
   'services',
   'ngAnimate',
   'ngFx',
+  'ng-token-auth',
 ])
 
 
@@ -16,6 +17,10 @@ todoer.config([ '$routeProvider','$httpProvider',
       .when('/todos',
         templateUrl: "list.html"
         controller: 'TodoCtrl'
+      )
+      .when('/sign_in',
+        templateUrl: 'user_sessions/new.html'
+        controller: 'UserSessionsCtrl'
       )
       .when('/todos/new',
         templateUrl: 'new.html'

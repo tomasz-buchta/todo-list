@@ -5,4 +5,5 @@ asset 'angular-resource'
 asset 'jquery'
 asset 'angular-animate'
 asset 'ngFx'
+asset 'ng-token-auth'
 # vim: ft=ruby

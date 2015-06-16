@@ -17,6 +17,8 @@
 //= require angular-route/angular-route
 //= require angular-rails-templates
 //= require angular-resource
+//= require angular-cookie/angular-cookie.min
+//= require ng-token-auth/dist/ng-token-auth.js
 //= require angular-animate
 //= require gsap/src/uncompressed/TweenMax
 //= require ngFx
