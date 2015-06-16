@@ -47,7 +47,6 @@ gem 'bower-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise'
 
 group :development do
   gem 'rails_layout'
