@@ -30,6 +30,10 @@ todoer.config([ '$routeProvider','$httpProvider',
         templateUrl: 'edit.html'
         controller:  'TodoEditCtrl'
       )
+      .when('/user/sign_in',
+        templateUrl: 'user_sessions/new.html'
+        controller: 'UserSessionsCtrl'
+      )
       .otherwise(
         redirectTo: '/todos'
     )
