@@ -1,10 +1,14 @@
-class User < ActiveRecord::Base
+class User
+
   include Mongoid::Document
+  include DeviseTokenAuth::Concerns::User
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :confirmable, :omniauthable
-  include DeviseTokenAuth::Concerns::User
+
+
+  before_save -> { skip_confirmation! }
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -34,4 +38,14 @@ class User < ActiveRecord::Base
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  def provider
+    'email'
+  end
+
+  def destroy_expired_tokens
+    self.tokens.delete_if{|cid,v|
+      expiry = v[:expiry] || v["expiry"]
+      DateTime.strptime(expiry.to_s, '%s') < Time.now
+    }
+  end
 end

@@ -12,7 +12,7 @@ gem 'responders'
 
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
-gem 'devise_token_auth'
+gem 'devise_token_auth',github: 'ybian/devise_token_auth', branch: 'mongoid'
 gem 'omniauth'
 gem 'therubyracer'
 # Use SCSS for stylesheets
@@ -76,7 +76,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
-
+  gem 'faker'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Rspec tests
