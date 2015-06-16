@@ -6,6 +6,7 @@ todoer = angular.module('todoer',[
   'services',
   'ngAnimate',
   'ngFx',
+  'Devise'
 ])
 
 

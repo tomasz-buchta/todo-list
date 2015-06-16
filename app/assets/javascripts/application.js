@@ -20,6 +20,7 @@
 //= require angular-animate
 //= require gsap/src/uncompressed/TweenMax
 //= require ngFx
+//= require angular-devise/lib/devise
 //= require_tree ./templates
 //= require_tree ./angular
 //= require_tree .
