@@ -48,7 +48,7 @@ gem 'bower-rails'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-
+gem 'angular_rails_csrf'
 group :development do
   gem 'rails_layout'
 
