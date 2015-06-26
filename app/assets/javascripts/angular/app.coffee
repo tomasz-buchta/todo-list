@@ -33,6 +33,11 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
         templateUrl: 'edit.html',
         controller: 'TodoEditCtrl'
       })
+      .state('sign_in',{
+        url: '/user/sign_in',
+        templateUrl: 'user_sessions/new.html'
+        controller: 'UserSessionsCtrl'
+      })
     $urlRouterProvider.otherwise('/todos')
 
     $urlRouterProvider.html5Mode = true
