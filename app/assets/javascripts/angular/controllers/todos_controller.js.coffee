@@ -9,16 +9,16 @@ controllers.controller 'TodoCtrl',['$scope','Todo',($scope,Todo)->
       )
 
 ]
-controllers.controller 'TodoDetailCtrl',['$scope','$routeParams','Todo',($scope,$routeParams,Todo)->
-  $scope.todo = Todo.get({Id:$routeParams.Id})
+controllers.controller 'TodoDetailCtrl',['$scope','$stateParams','Todo',($scope,$stateParams,Todo)->
+  $scope.todo = Todo.get({Id:$stateParams.Id})
 ]
 controllers.controller 'TodoNewCtrl',['$scope','Todo',($scope,Todo) ->
   todo = $scope.todo = Todo.get({Id:'new'})
   $scope.addTodo = ->
     Todo.save($scope.todo)
 ]
-controllers.controller 'TodoEditCtrl',['$scope','$routeParams','Todo',($scope,$routeParams,Todo)->
-  todo = $scope.todo = Todo.get({Id:$routeParams.Id})
+controllers.controller 'TodoEditCtrl',['$scope','$stateParams','Todo',($scope,$stateParams,Todo)->
+  todo = $scope.todo = Todo.get({Id:$stateParams.Id})
   $scope.updateTodo = ->
-    Todo.update(todo: $scope.todo,Id:$routeParams.Id)
+    Todo.update(todo: $scope.todo,Id:$stateParams.Id)
 ]

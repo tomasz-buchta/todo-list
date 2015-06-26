@@ -24,13 +24,14 @@ module.exports = function(config){
 
         files : [
             'vendor/assets/bower_components/angular/angular.js',
-            'vendor/assets/bower_components/angular-route/angular-route.js',
             'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
+            'vendor/assets/bower_components/ui-router/release/angular-ui-router.js',
             'vendor/assets/bower_components/angular-resource/angular-resource.js',
             'vendor/assets/bower_components/angular-animate/angular-animate.js',
             'vendor/assets/bower_components/gsap/src/uncompressed/TweenMax.js',
             'vendor/assets/bower_components/ngFx/dist/ngFx.js',
             'vendor/assets/bower_components/jquery/dist/jquery.js',
+            'vendor/assets/bower_components/angular-devise/src/build/devise.js',
             'app/assets/javascripts/angular/**/*.coffee',
             'app/assets/javascripts/templates/**/*.html',
             'spec/javascripts/unit/**/*.js'

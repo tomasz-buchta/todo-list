@@ -1,5 +1,5 @@
 todoer = angular.module('todoer',[
-  'ngRoute',
+  'ui.router',
   'templates',
   'controllers',
   'ngResource',
@@ -9,32 +9,31 @@ todoer = angular.module('todoer',[
   'Devise'
 ])
 
+todoer.config([ '$stateProvider','$urlRouterProvider',
+  ($stateProvider,$urlRouterProvider)->
 
-
-todoer.config([ '$routeProvider','$httpProvider',
-  ($routeProvider,$httpProvider)->
-    $routeProvider
-      .when('/todos',
-        templateUrl: "list.html"
+    $stateProvider
+      .state('index', {
+        url: '/todos',
+        templateUrl: "list.html",
         controller: 'TodoCtrl'
-      )
-      .when('/todos/new',
-        templateUrl: 'new.html'
-        controller:  'TodoNewCtrl'
-      )
-      .when('/todos/:Id',
-        templateUrl: "detail.html"
-        controller: "TodoDetailCtrl"
-      )
-      .when('/todos/:Id/edit',
-        templateUrl: 'edit.html'
-        controller:  'TodoEditCtrl'
-      )
-      .when('/user/sign_in',
-        templateUrl: 'user_sessions/new.html'
-        controller: 'UserSessionsCtrl'
-      )
-      .otherwise(
-        redirectTo: '/todos'
-    )
+      })
+      .state('new', {
+        url: '/todos/new',
+        templateUrl: 'new.html',
+        controller: 'TodoNewCtrl'
+      })
+      .state('detail', {
+        url: '/todos/:Id',
+        templateUrl: 'detail.html',
+        controller: 'TodoDetailCtrl'
+      })
+      .state('edit',{
+        url: '/todos/:Id/edit',
+        templateUrl: 'edit.html',
+        controller: 'TodoEditCtrl'
+      })
+    $urlRouterProvider.otherwise('/todos')
+
+    $urlRouterProvider.html5Mode = true
 ])
