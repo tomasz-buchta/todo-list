@@ -14,30 +14,26 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
 
     $stateProvider
       .state('index', {
-        url: '/',
+        url: '/todos',
         templateUrl: "list.html",
-        controller: 'TodoCtrl'})
+        controller: 'TodoCtrl'
+      })
+      .state('new', {
+        url: '/todos/new',
+        templateUrl: 'new.html',
+        controller: 'TodoNewCtrl'
+      })
+      .state('detail', {
+        url: '/todos/:Id',
+        templateUrl: 'detail.html',
+        controller: 'TodoDetailCtrl'
+      })
+      .state('edit',{
+        url: '/todos/:Id/edit',
+        templateUrl: 'edit.html',
+        controller: 'TodoEditCtrl'
+      })
+    $urlRouterProvider.otherwise('/todos')
 
-    $urlRouterProvider.otherwise('/')
-
-#    $locationProvider.html5Mode(true)
+    $urlRouterProvider.html5Mode = true
 ])
-#      .when('/todos/new',
-#        templateUrl: 'new.html'
-#        controller:  'TodoNewCtrl'
-#      )
-#      .when('/todos/:Id',
-#        templateUrl: "detail.html"
-#        controller: "TodoDetailCtrl"
-#      )
-#      .when('/todos/:Id/edit',
-#        templateUrl: 'edit.html'
-#        controller:  'TodoEditCtrl'
-#      )
-#      .when('/user/sign_in',
-#        templateUrl: 'user_sessions/new.html'
-#        controller: 'UserSessionsCtrl'
-#      )
-#      .otherwise(
-#        redirectTo: '/todos'
-#    )
