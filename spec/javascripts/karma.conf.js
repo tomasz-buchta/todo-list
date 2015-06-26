@@ -34,7 +34,7 @@ module.exports = function(config){
             'vendor/assets/bower_components/angular-devise/src/build/devise.js',
             'app/assets/javascripts/angular/**/*.coffee',
             'app/assets/javascripts/templates/**/*.html',
-            'spec/javascripts/unit/**/*.js'
+            'spec/javascripts/unit/**/*.coffee'
         ],
 
         autoWatch : true,
