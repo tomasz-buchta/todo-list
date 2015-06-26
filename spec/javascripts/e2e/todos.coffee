@@ -19,7 +19,7 @@ describe('Todos list view', ->
     keywords.sendKeys('title 2')
     expect(todosList.count()).toBe(1)
     todosList.all(By.css('.pricing-table a')).first().click()
-    element.all(By.css('.button')).last().click()
+    element(By.css('.button')).click()
     expect(browser.getLocationAbsUrl()).toBe('/todos')
 
   it 'should add a new todo and delete one', ->
