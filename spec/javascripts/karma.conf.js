@@ -31,7 +31,7 @@ module.exports = function(config){
             'vendor/assets/bower_components/gsap/src/uncompressed/TweenMax.js',
             'vendor/assets/bower_components/ngFx/dist/ngFx.js',
             'vendor/assets/bower_components/jquery/dist/jquery.js',
-            'vendor/assets/bower_components/angular-devise/src/build/devise.js',
+            'vendor/assets/bower_components/angular-devise/lib/devise.js',
             'app/assets/javascripts/angular/**/*.coffee',
             'app/assets/javascripts/templates/**/*.html',
             'spec/javascripts/unit/**/*.coffee'
