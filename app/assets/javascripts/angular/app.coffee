@@ -58,7 +58,10 @@ todoer.run(['$rootScope','$state','Auth',($rootScope,$state,Auth)->
     $rootScope.$on('devise:login', ((event,currentUser) ->
       console.log currentUser
       console.log Auth.isAuthenticated()
-    )
-    )
+    ))
+    $rootScope.$on('devise:logout',((event,oldUser)->
+      console.log 'logout'
+      $state.go('index')
+    ))
   )
 ])
