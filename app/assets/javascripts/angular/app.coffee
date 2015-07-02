@@ -49,7 +49,6 @@ todoer.run(['$rootScope','$state','Auth',($rootScope,$state,Auth)->
   $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
     $rootScope.toState = toState
     $rootScope.toStateParams = toStateParams
-    console.log Auth.isAuthenticated()
     user = Auth.currentUser().then((user)->
       $rootScope.currentUser = user
     ,

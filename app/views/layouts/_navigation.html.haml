@@ -8,5 +8,8 @@
       %a{:href => "#"}
         Menu
   .top-bar-section
-    %ul.right
-      = render 'layouts/navigation_links'
+    %ul.right(ng-controller="UserCtrl")
+      %li{"ng-show" => "!isAuthenticated"}
+        %a.button{"ui-sref" => "sign_in"} Sign in
+      %li{"ng-show" => "isAuthenticated"}
+        %a.button{"ui-sref" => "sign_out"} Sign out

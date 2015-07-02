@@ -16,11 +16,6 @@ controllers.controller 'UserSessionsCtrl', ['$scope','Auth',($scope,Auth)->
       (error) ->
         alert 'authentication failed'
     )
-
-    $scope.$on('devise:login', ((event,currentUser) ->
-      console.log 'devise:login'
-      )
-    )
 ]
 controllers.controller 'UserSignOutCtrl', ['$scope','Auth',($scope,Auth)->
     Auth.logout().then((oldUser)->
@@ -29,4 +24,10 @@ controllers.controller 'UserSignOutCtrl', ['$scope','Auth',($scope,Auth)->
     (error)->
       alert 'Error'
   )
+]
+controllers.controller 'UserCtrl',['$scope','Auth',($scope,Auth)->
+  $scope.$on('devise:login',((event,currentUser)->
+    $scope.currentUser = currentUser
+    $scope.isAuthenticated = Auth.isAuthenticated()
+  ))
 ]
