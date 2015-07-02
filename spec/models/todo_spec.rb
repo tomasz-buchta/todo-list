@@ -4,6 +4,8 @@ RSpec.describe Todo, type: :model do
   context 'invalid attributes' do
     let(:todo) {FactoryGirl.build(:todo)}
 
+    it { should validate_presence_of(:user) }
+
     it 'without title should be invalid' do
       todo.title = ''
       expect(todo).to_not be_valid
