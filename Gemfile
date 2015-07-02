@@ -10,7 +10,6 @@ gem 'bson_ext'
 
 gem 'responders'
 
-gem 'angularjs-rails'
 gem 'angular-rails-templates'
 
 gem 'therubyracer'
@@ -65,7 +64,6 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
   gem 'simplecov'
