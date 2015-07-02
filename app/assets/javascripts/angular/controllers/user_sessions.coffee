@@ -11,7 +11,6 @@ controllers.controller 'UserSessionsCtrl', ['$scope','Auth',($scope,Auth)->
   }
   $scope.login = (credentials) ->
     Auth.login(credentials,config).then( (user) ->
-      console.log 'Auth.login'
       $scope.currentUser = Auth.currentUser()
     ,
       (error) ->
