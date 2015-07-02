@@ -13,6 +13,7 @@ describe 'todoer controllers', ->
     beforeEach inject((_$httpBackend_, $rootScope, $controller) ->
       $httpBackend = _$httpBackend_
       $httpBackend.whenGET('list.html').respond {}
+      $httpBackend.whenPOST('/users/sign_in.json').respond {}
       $httpBackend.expectGET('../todos.json').respond [ { title: 'todo 2' } ]
       scope = $rootScope.$new()
       ctrl = $controller('TodoCtrl', $scope: scope)
@@ -35,6 +36,7 @@ describe 'todoer controllers', ->
     beforeEach inject((_$httpBackend_, $rootScope, $stateParams, $controller) ->
       $httpBackend = _$httpBackend_
       $httpBackend.whenGET('list.html').respond {}
+      $httpBackend.whenPOST('/users/sign_in.json').respond {}
       $httpBackend.expectGET('../todos/123.json').respond todoData()
       $stateParams.Id = '123'
       scope = $rootScope.$new()
@@ -70,6 +72,7 @@ describe 'todoer controllers', ->
     beforeEach inject((_$httpBackend_, $rootScope, $stateParams, $controller) ->
       $httpBackend = _$httpBackend_
       $httpBackend.whenGET('list.html').respond {}
+      $httpBackend.whenPOST('/users/sign_in.json').respond {}
       $httpBackend.expectGET('../todos/new.json').respond newTodo()
       scope = $rootScope.$new()
       ctrl = $controller('TodoNewCtrl', $scope: scope)

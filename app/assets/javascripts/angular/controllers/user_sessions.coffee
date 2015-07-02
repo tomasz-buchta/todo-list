@@ -22,3 +22,11 @@ controllers.controller 'UserSessionsCtrl', ['$scope','Auth',($scope,Auth)->
       )
     )
 ]
+controllers.controller 'UserSignOutCtrl', ['$scope','Auth',($scope,Auth)->
+    Auth.logout().then((oldUser)->
+      alert 'Logged out'
+    ,
+    (error)->
+      alert 'Error'
+  )
+]

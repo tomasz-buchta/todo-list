@@ -1,5 +1,5 @@
 controllers = angular.module('controllers',[])
-controllers.controller 'TodoCtrl',['$scope','Todo',($scope,Todo)->
+controllers.controller 'TodoCtrl',['$scope','Todo','Auth',($scope,Todo,Auth)->
   $scope.orderProp = 'title'
   $scope.todos = Todo.query()
   $scope.deleteTodo = (id) ->

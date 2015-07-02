@@ -38,6 +38,9 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
         templateUrl: 'user_sessions/new.html'
         controller: 'UserSessionsCtrl'
       })
+      .state('sign_out',{
+        controller: 'UserSignOutCtrl'
+      })
     $urlRouterProvider.otherwise('/todos')
 
     $urlRouterProvider.html5Mode = true
@@ -46,12 +49,17 @@ todoer.run(['$rootScope','$state','Auth',($rootScope,$state,Auth)->
   $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
     $rootScope.toState = toState
     $rootScope.toStateParams = toStateParams
+    console.log Auth.isAuthenticated()
     user = Auth.currentUser().then((user)->
-      console.log(user)
+      $rootScope.currentUser = user
     ,
     (error)->
-      console.log 'error'
+      console.log error
+    )
+    $rootScope.$on('devise:login', ((event,currentUser) ->
+      console.log currentUser
+      console.log Auth.isAuthenticated()
+    )
     )
   )
-
 ])
