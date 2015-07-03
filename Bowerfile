@@ -1,6 +1,6 @@
-asset 'angular'
+asset 'angular', '1.3.14'
 asset 'ui-router'
-asset 'angular-mocks'
+asset 'angular-mocks', '1.3.14'
 asset 'angular-resource'
 asset 'jquery'
 asset 'angular-animate'
