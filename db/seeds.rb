@@ -9,3 +9,4 @@
 2.times {FactoryGirl.create(:user)}
 10.times {FactoryGirl.create(:todo,user: User.all.sample)}
 5.times {FactoryGirl.create(:todo,:completed, user: User.all.sample)}
+FactoryGirl.create(:user,email: 'user@example.com')

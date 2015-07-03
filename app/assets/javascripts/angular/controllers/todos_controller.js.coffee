@@ -12,10 +12,13 @@ controllers.controller 'TodoCtrl',['$scope','Todo','Auth',($scope,Todo,Auth)->
 controllers.controller 'TodoDetailCtrl',['$scope','$stateParams','Todo',($scope,$stateParams,Todo)->
   $scope.todo = Todo.get({Id:$stateParams.Id})
 ]
-controllers.controller 'TodoNewCtrl',['$scope','Todo',($scope,Todo) ->
+controllers.controller 'TodoNewCtrl',['$scope','Todo','Auth',($scope,Todo,Auth) ->
   todo = $scope.todo = Todo.get({Id:'new'})
   $scope.addTodo = ->
-    Todo.save($scope.todo)
+    Auth.currentUser().then((user)->
+      $scope.todo.user_id = user._id.$oid
+      Todo.save($scope.todo)
+    )
 ]
 controllers.controller 'TodoEditCtrl',['$scope','$stateParams','Todo',($scope,$stateParams,Todo)->
   todo = $scope.todo = Todo.get({Id:$stateParams.Id})

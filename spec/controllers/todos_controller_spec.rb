@@ -69,7 +69,6 @@ RSpec.describe TodosController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
-      before { skip }
       it "creates a new Todo" do
         expect {
           post :create, :todo => valid_attributes

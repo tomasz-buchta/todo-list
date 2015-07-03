@@ -67,7 +67,8 @@ describe 'todoer controllers', ->
       "completion":null,"created_at":"2015-06-26T12:17:11.000Z",
       "description":null,
       "title":null,
-      "updated_at":null}
+      "updated_at":null,
+      "user_id": null}
 
     beforeEach inject((_$httpBackend_, $rootScope, $stateParams, $controller) ->
       $httpBackend = _$httpBackend_
