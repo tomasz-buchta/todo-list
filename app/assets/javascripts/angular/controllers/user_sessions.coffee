@@ -25,9 +25,13 @@ controllers.controller 'UserSignOutCtrl', ['$scope','Auth',($scope,Auth)->
       alert 'Error'
   )
 ]
-controllers.controller 'UserCtrl',['$scope','Auth',($scope,Auth)->
+controllers.controller 'UserCtrl',['$state','$scope','Auth',($state,$scope,Auth)->
   $scope.$on('devise:login',((event,currentUser)->
     $scope.currentUser = currentUser
+    $scope.isAuthenticated = Auth.isAuthenticated()
+  ))
+  $scope.$on('devise:logout',((event,oldUser)->
+    $scope.currentUser = null
     $scope.isAuthenticated = Auth.isAuthenticated()
   ))
 ]

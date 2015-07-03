@@ -16,12 +16,13 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
       .state('index', {
         url: '/todos',
         templateUrl: "list.html",
-        controller: 'TodoCtrl'
+        controller: 'TodoCtrl',
       })
       .state('new', {
         url: '/todos/new',
         templateUrl: 'new.html',
-        controller: 'TodoNewCtrl'
+        controller: 'TodoNewCtrl',
+        authenticate: true
       })
       .state('detail', {
         url: '/todos/:Id',
@@ -31,10 +32,11 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
       .state('edit',{
         url: '/todos/:Id/edit',
         templateUrl: 'edit.html',
-        controller: 'TodoEditCtrl'
+        controller: 'TodoEditCtrl',
+        authenticate: true
       })
       .state('sign_in',{
-        url: '/user/sign_in',
+        url: '/user/sign_in'
         templateUrl: 'user_sessions/new.html'
         controller: 'UserSessionsCtrl'
       })
@@ -45,23 +47,17 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
 
     $urlRouterProvider.html5Mode = true
 ])
-todoer.run(['$rootScope','$state','Auth',($rootScope,$state,Auth)->
+todoer.run(['$rootScope','$state','$timeout','Auth',($rootScope,$state,$timeout,Auth)->
   $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
     $rootScope.toState = toState
     $rootScope.toStateParams = toStateParams
-    user = Auth.currentUser().then((user)->
-      $rootScope.currentUser = user
-    ,
-    (error)->
-      console.log error
-    )
-    $rootScope.$on('devise:login', ((event,currentUser) ->
-      console.log currentUser
-      console.log Auth.isAuthenticated()
-    ))
-    $rootScope.$on('devise:logout',((event,oldUser)->
-      console.log 'logout'
-      $state.go('index')
-    ))
+
+    if toState.authenticate
+      unless Auth.isAuthenticated()
+        $timeout(->
+          $state.go('sign_in'))
   )
+  $rootScope.$on('devise:logout',((event,oldUser)->
+    $state.go('index')
+  ))
 ])
