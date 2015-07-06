@@ -9,6 +9,8 @@
     "angular-animate": "latest",
     "ngFx": "latest",
     "angular-devise": "latest",
-    "angular-flash": "latest"
+    "angular-flash": "latest",
+    "sweetalert": "latest",
+    "angular-sweetalert": "latest"
   }
 }

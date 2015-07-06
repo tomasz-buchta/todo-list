@@ -9,7 +9,8 @@ todoer = angular.module('todoer',[
   'Devise',
   'angular-flash.service',
   'angular-flash.flash-alert-directive',
-  'alertService'
+  'alertService',
+  'oitozero.ngSweetAlert'
 ])
 
 todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider'

@@ -22,6 +22,8 @@
 //= require ngFx
 //= require angular-devise/lib/devise
 //= require angular-flash
+//= require angular-sweetalert
+//= require sweetalert
 //= require_tree ./templates
 //= require_tree ./angular
 //= require_tree .

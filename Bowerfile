@@ -7,4 +7,6 @@ asset 'angular-animate'
 asset 'ngFx'
 asset 'angular-devise'
 asset 'angular-flash'
+asset 'sweetalert'
+asset 'angular-sweetalert'
 # vim: ft=ruby

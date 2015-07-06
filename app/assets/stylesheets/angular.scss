@@ -17,3 +17,9 @@
 .alert-box.ng-hide {
   opacity: 0;
 }
+
+.sweet-alert {
+  fieldset {
+    display: none;
+  }
+}
