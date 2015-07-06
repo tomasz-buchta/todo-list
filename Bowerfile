@@ -6,4 +6,5 @@ asset 'jquery'
 asset 'angular-animate'
 asset 'ngFx'
 asset 'angular-devise'
+asset 'angular-flash'
 # vim: ft=ruby

@@ -1,5 +1,5 @@
 controllers = angular.module('todoer')
-controllers.controller 'UserSessionsCtrl', ['$scope','Auth','$state',($scope,Auth,$state)->
+controllers.controller 'UserSessionsCtrl', ['$scope','Auth','$state','Alert',($scope,Auth,$state,Alert)->
   credentials = {
     email: '',
     password: ''
@@ -15,20 +15,21 @@ controllers.controller 'UserSessionsCtrl', ['$scope','Auth','$state',($scope,Aut
       $state.go('index')
     ,
       (error) ->
-        alert 'authentication failed'
+        Alert.error 'Authentication failed'
     )
 ]
-controllers.controller 'UserSignOutCtrl', ['$scope','Auth',($scope,Auth)->
+controllers.controller 'UserSignOutCtrl', ['$scope','Auth','Alert',($scope,Auth,Alert)->
     Auth.logout().then((oldUser)->
-      alert 'Logged out'
+      Alert.success('User signed out')
     ,
     (error)->
-      alert 'Error'
+      Alert.alert('Error with authentication')
   )
 ]
-controllers.controller 'UserCtrl',['$state','$scope','Auth',($state,$scope,Auth)->
+controllers.controller 'UserCtrl',['$state','$scope','Auth','Alert',($state,$scope,Auth,Alert)->
   $scope.$on('devise:login',((event,currentUser)->
     $scope.currentUser = currentUser
+    Alert.success('User signed in')
     $scope.isAuthenticated = Auth.isAuthenticated()
   ))
   $scope.$on('devise:logout',((event,oldUser)->

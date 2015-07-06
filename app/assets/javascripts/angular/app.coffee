@@ -6,11 +6,14 @@ todoer = angular.module('todoer',[
   'services',
   'ngAnimate',
   'ngFx',
-  'Devise'
+  'Devise',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive',
+  'alertService'
 ])
 
-todoer.config([ '$stateProvider','$urlRouterProvider',
-  ($stateProvider,$urlRouterProvider)->
+todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider'
+  ($stateProvider,$urlRouterProvider,flashProvider)->
 
     $stateProvider
       .state('index', {
@@ -46,13 +49,19 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
     $urlRouterProvider.otherwise('/todos')
 
     $urlRouterProvider.html5Mode = true
+
+    flashProvider.errorClassnames.push('alert')
+    flashProvider.successClassnames.push('success')
+    flashProvider.warnClassnames.push('warning')
+    flashProvider.infoClassnames.push('info')
+
 ])
 todoer.run(['$rootScope','$state','$timeout','Auth',($rootScope,$state,$timeout,Auth)->
-  $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
-    console.log toState
+  $rootScope.$on('$stateChangeStart',(event,toState,toStateParams,flash)->
     $rootScope.toState = toState
     $rootScope.toStateParams = toStateParams
 
+    flash.message = 'test'
     if toState.authenticate
       unless Auth.isAuthenticated()
         $timeout(->

@@ -21,6 +21,7 @@
 //= require gsap/src/uncompressed/TweenMax
 //= require ngFx
 //= require angular-devise/lib/devise
+//= require angular-flash
 //= require_tree ./templates
 //= require_tree ./angular
 //= require_tree .

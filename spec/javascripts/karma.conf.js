@@ -32,6 +32,7 @@ module.exports = function(config){
             'vendor/assets/bower_components/ngFx/dist/ngFx.js',
             'vendor/assets/bower_components/jquery/dist/jquery.js',
             'vendor/assets/bower_components/angular-devise/lib/devise.js',
+            'vendor/assets/bower_components/angular-flash/dist/angular-flash.js',
             'app/assets/javascripts/angular/**/*.coffee',
             'app/assets/javascripts/templates/**/*.html',
             'spec/javascripts/unit/**/*.coffee'

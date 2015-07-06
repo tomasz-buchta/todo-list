@@ -1,6 +1,11 @@
--# Rails flash messages styled for Zurb Foundation
-- flash.each do |name, msg|
-  - if msg.is_a?(String)
-    %div{:class => "alert-box round #{name.to_s == 'notice' ? 'success' : 'alert'}", "data-alert" => ""}
-      = content_tag :div, msg
-      %a.close{:href => "#"} &times;
+.alert-box(data-alert active-class="in" flash-alert="success" ng-show="flash.message")
+  %span.alert-message {{flash.message}}
+  %button.close(href="#") &times;
+
+.alert-box.alert(data-alert active-class="in" flash-alert="error" ng-show="flash.message")
+  %span.alert-message {{flash.message}}
+  %button.close(href="#") &times;
+
+.alert-box.info(data-alert active-class="in" flash-alert="info" ng-show="flash.message")
+  %span.alert-message {{flash.message}}
+  %button.close(href="#") &times;
