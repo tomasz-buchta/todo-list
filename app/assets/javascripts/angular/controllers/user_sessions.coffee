@@ -1,5 +1,5 @@
 controllers = angular.module('todoer')
-controllers.controller 'UserSessionsCtrl', ['$scope','Auth',($scope,Auth)->
+controllers.controller 'UserSessionsCtrl', ['$scope','Auth','$state',($scope,Auth,$state)->
   credentials = {
     email: '',
     password: ''
@@ -12,6 +12,7 @@ controllers.controller 'UserSessionsCtrl', ['$scope','Auth',($scope,Auth)->
   $scope.login = (credentials) ->
     Auth.login(credentials,config).then( (user) ->
       $scope.currentUser = Auth.currentUser()
+      $state.go('index')
     ,
       (error) ->
         alert 'authentication failed'

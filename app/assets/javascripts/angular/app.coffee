@@ -49,6 +49,7 @@ todoer.config([ '$stateProvider','$urlRouterProvider',
 ])
 todoer.run(['$rootScope','$state','$timeout','Auth',($rootScope,$state,$timeout,Auth)->
   $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
+    console.log toState
     $rootScope.toState = toState
     $rootScope.toStateParams = toStateParams
 
