@@ -1,37 +1,64 @@
 todoer = angular.module('todoer',[
-  'ngRoute',
+  'ui.router',
   'templates',
   'controllers',
   'ngResource',
   'services',
   'ngAnimate',
   'ngFx',
+  'Devise'
 ])
 
+todoer.config([ '$stateProvider','$urlRouterProvider',
+  ($stateProvider,$urlRouterProvider)->
 
+    $stateProvider
+      .state('index', {
+        url: '/todos',
+        templateUrl: "list.html",
+        controller: 'TodoCtrl',
+      })
+      .state('new', {
+        url: '/todos/new',
+        templateUrl: 'new.html',
+        controller: 'TodoNewCtrl',
+        authenticate: true
+      })
+      .state('detail', {
+        url: '/todos/:Id',
+        templateUrl: 'detail.html',
+        controller: 'TodoDetailCtrl'
+      })
+      .state('edit',{
+        url: '/todos/:Id/edit',
+        templateUrl: 'edit.html',
+        controller: 'TodoEditCtrl',
+        authenticate: true
+      })
+      .state('sign_in',{
+        url: '/user/sign_in'
+        templateUrl: 'user_sessions/new.html'
+        controller: 'UserSessionsCtrl'
+      })
+      .state('sign_out',{
+        controller: 'UserSignOutCtrl'
+      })
+    $urlRouterProvider.otherwise('/todos')
 
-todoer.config([ '$routeProvider','$httpProvider',
-  ($routeProvider,$httpProvider)->
-    $routeProvider
-      .when('/todos',
-        templateUrl: "list.html"
-        controller: 'TodoCtrl'
-      )
-      .when('/todos/new',
-        templateUrl: 'new.html'
-        controller:  'TodoNewCtrl'
-      )
-      .when('/todos/:Id',
-        templateUrl: "detail.html"
-        controller: "TodoDetailCtrl"
-      )
-      .when('/todos/:Id/edit',
-        templateUrl: 'edit.html'
-        controller:  'TodoEditCtrl'
-      )
-      .otherwise(
-        redirectTo: '/todos'
-    )
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] =
-      $("meta[name='csrf-token']").attr('content')
+    $urlRouterProvider.html5Mode = true
+])
+todoer.run(['$rootScope','$state','$timeout','Auth',($rootScope,$state,$timeout,Auth)->
+  $rootScope.$on('$stateChangeStart',(event,toState,toStateParams)->
+    console.log toState
+    $rootScope.toState = toState
+    $rootScope.toStateParams = toStateParams
+
+    if toState.authenticate
+      unless Auth.isAuthenticated()
+        $timeout(->
+          $state.go('sign_in'))
+  )
+  $rootScope.$on('devise:logout',((event,oldUser)->
+    $state.go('index')
+  ))
 ])

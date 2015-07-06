@@ -1,0 +1,32 @@
+<div ng-if="Auth.currentUser">Welcome</div>
+
+<form ng-submit="login(credentials)" role="form">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email"
+               name="email"
+               id="email"
+               ng-model="credentials.email"
+               required="required"
+               class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+               name="password"
+               id="password"
+               ng-model="credentials.password"
+               required="required"
+               class="form-control">
+    </div>
+    <div class="row">
+        <div class="small-2 columns">
+            <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+        </div>
+        <div class="small-10 columns">
+            <a class="button" ui-sref="index">Back</a>
+        </div>
+    </div>
+
+</form>

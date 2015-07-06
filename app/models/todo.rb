@@ -1,10 +1,13 @@
 class Todo
   include Mongoid::Document
   include Mongoid::Timestamps
+  belongs_to :user
+
   field :title, type: String
   field :description, type: String
   field :completion, type: Integer
 
+  validates :user, presence: true
   validates :title, presence: true
   validates :completion, presence: true
   validates :completion, numericality: {greater_than: 0,less_than_or_equal_to: 100}

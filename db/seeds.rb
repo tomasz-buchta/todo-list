@@ -5,5 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-10.times {FactoryGirl.create(:todo)}
-5.times {FactoryGirl.create(:todo,:completed)}
+
+2.times {FactoryGirl.create(:user)}
+10.times {FactoryGirl.create(:todo,user: User.all.sample)}
+5.times {FactoryGirl.create(:todo,:completed, user: User.all.sample)}
+FactoryGirl.create(:user,email: 'user@example.com')

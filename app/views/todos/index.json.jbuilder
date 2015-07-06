@@ -1,4 +1,5 @@
 json.array!(@todos) do |todo|
   json.extract! todo, :id, :title, :description, :completion
   json.url todo_url(todo, format: :json)
+  json.partial! 'user', todo: todo
 end

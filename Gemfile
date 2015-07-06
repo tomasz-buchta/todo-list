@@ -10,7 +10,6 @@ gem 'bson_ext'
 
 gem 'responders'
 
-gem 'angularjs-rails'
 gem 'angular-rails-templates'
 
 gem 'therubyracer'
@@ -48,7 +47,7 @@ gem 'bower-rails'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-
+gem 'angular_rails_csrf'
 group :development do
   gem 'rails_layout'
 
@@ -65,7 +64,6 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'faker'
   gem 'launchy'
   gem 'simplecov'
@@ -76,7 +74,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
-
+  gem 'faker'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Rspec tests

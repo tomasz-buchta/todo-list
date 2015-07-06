@@ -3,10 +3,15 @@
 %nav.top-bar{"data-topbar" => true}
   %ul.title-area
     %li.name
-      = link_to 'Home', root_path
+      %a(ui-sref="index")Home
     %li.toggle-topbar.menu-icon
       %a{:href => "#"}
         Menu
   .top-bar-section
-    %ul
-      -#= render 'layouts/navigation_links'
+    %ul.right(ng-controller="UserCtrl")
+      %li(ng-show="isAuthenticated")
+        %a {{currentUser.email}}
+      %li{"ng-show" => "!isAuthenticated"}
+        %a.button{"ui-sref" => "sign_in"} Sign in
+      %li{"ng-show" => "isAuthenticated"}
+        %a.button{"ui-sref" => "sign_out"} Sign out
