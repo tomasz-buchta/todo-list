@@ -1,13 +1,22 @@
 controllers = angular.module('controllers',[])
-controllers.controller 'TodoCtrl',['$scope','Todo','Auth',($scope,Todo,Auth)->
+controllers.controller 'TodoCtrl',['$scope','Todo','Auth','SweetAlert',($scope,Todo,Auth,SweetAlert)->
   $scope.orderProp = 'title'
   $scope.todos = Todo.query()
   $scope.deleteTodo = (id) ->
-    if confirm "Are you sure?"
-      Todo.delete(Id: id,->
-        $scope.todos = Todo.query()
-      )
 
+    SweetAlert.swal({
+      type: 'warning'
+      title: 'Are you sure?'
+      text: 'This cannot be undone'
+      showCancelButton: true
+      },
+      
+      (isConfirm)->
+        if isConfirm
+          Todo.delete(Id: id,->
+            $scope.todos = Todo.query()
+          )
+    )
 ]
 controllers.controller 'TodoDetailCtrl',['$scope','$stateParams','Todo',($scope,$stateParams,Todo)->
   $scope.todo = Todo.get({Id:$stateParams.Id})
