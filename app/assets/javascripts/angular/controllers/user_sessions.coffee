@@ -23,7 +23,7 @@ controllers.controller 'UserSignOutCtrl', ['$scope','Auth','Alert',($scope,Auth,
       Alert.success('User signed out')
     ,
     (error)->
-      Alert.alert('Error with authentication')
+      Alert.error('Error with authentication')
   )
 ]
 controllers.controller 'UserCtrl',['$state','$scope','Auth','Alert',($state,$scope,Auth,Alert)->

@@ -13,8 +13,8 @@ todoer = angular.module('todoer',[
   'oitozero.ngSweetAlert'
 ])
 
-todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider'
-  ($stateProvider,$urlRouterProvider,flashProvider)->
+todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider','AuthProvider'
+  ($stateProvider,$urlRouterProvider,flashProvider,AuthProvider)->
 
     $stateProvider
       .state('index', {
@@ -50,6 +50,12 @@ todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider'
     $urlRouterProvider.otherwise('/todos')
 
     $urlRouterProvider.html5Mode = true
+
+    AuthProvider.loginMethod('GET');
+    AuthProvider.loginPath('/session/sign_in.json');
+
+    AuthProvider.logoutMethod('DELETE');
+    AuthProvider.logoutPath('/session/sign_out.json');
 
     flashProvider.errorClassnames.push('alert')
     flashProvider.successClassnames.push('success')
