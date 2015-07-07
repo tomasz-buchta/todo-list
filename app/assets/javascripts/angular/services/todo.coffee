@@ -1,4 +1,4 @@
-todoerServices = angular.module('services',['ngResource'])
+todoerServices = angular.module('services.todo',['ngResource'])
 
 todoerServices.factory('Todo',['$resource',($resource)->
   $resource('../todos/:Id.json',{Id:"@Id"},{

@@ -3,14 +3,15 @@ todoer = angular.module('todoer',[
   'templates',
   'controllers',
   'ngResource',
-  'services',
+  'services.todo',
   'ngAnimate',
   'ngFx',
   'Devise',
   'angular-flash.service',
   'angular-flash.flash-alert-directive',
   'alertService',
-  'oitozero.ngSweetAlert'
+  'oitozero.ngSweetAlert',
+  'user'
 ])
 
 todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider','AuthProvider'
