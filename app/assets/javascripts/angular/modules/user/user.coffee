@@ -4,12 +4,21 @@ angular.module('user',[])
     $stateProvider
       .state('users',{
         url: '/users'
-        templateUrl: "index.html"
-        controller: 'UserCtrl'
-      }
-    )
+        templateUrl: "angular/modules/user/user-list.html"
+        controller: 'UserListCtrl'
+      })
+      .state('user-profile',{
+        url: '/users/:Id'
+        templateUrl: 'angular/modules/user/profile.html'
+        controller: 'UserProfileCtrl'
+      })
 ])
 
-.controller('UserCtrl',['$scope',($scope)->
-  $scope.users = {email: 'one'}
+.controller('UserListCtrl',['$scope','User',($scope,User)->
+    console.log 'test'
+    $scope.users = User.query()
+])
+.controller('UserProfileCtrl',['$scope','$stateParams','User',($scope,$stateParams,User)->
+    console.log 'profile ctrl'
+    $scope.user = User.get({Id:$stateParams.Id})
 ])

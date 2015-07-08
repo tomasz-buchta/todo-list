@@ -11,7 +11,8 @@ todoer = angular.module('todoer',[
   'angular-flash.flash-alert-directive',
   'alertService',
   'oitozero.ngSweetAlert',
-  'user'
+  'user',
+  'services.user'
 ])
 
 todoer.config([ '$stateProvider','$urlRouterProvider','flashProvider','AuthProvider'
