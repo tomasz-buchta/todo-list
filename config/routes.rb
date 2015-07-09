@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   get 'angular/index'
 
   devise_for :users, :path => :session
-  resources :todos
-  resources :users
+  resources :todos, :except => [:new,:create]
+  resources :users do
+    resources :todos, shallow: true, :only => [:new,:create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

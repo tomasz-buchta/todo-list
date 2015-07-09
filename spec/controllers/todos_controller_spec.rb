@@ -40,10 +40,25 @@ RSpec.describe TodosController, type: :controller do
   let(:valid_session) { {} }
   let(:todo) {FactoryGirl.create(:todo)}
   describe "GET #index" do
-    it "assigns all todos as @todos" do
-      get :index, {}, valid_session
-      expect(assigns(:todos)).to eq([todo])
+    context "with user_id" do
+      it "assigns all todos as @todos" do
+        get :index, {user_id: todo.user.id}, valid_session
+        expect(assigns(:todos)).to eq([todo])
+      end
+
+      it "assign user as @user" do
+        get :index, {user_id: user.id}, valid_session
+        expect(assigns(:user)).to eq(user)
+      end
     end
+
+    context "without user_id" do
+      it "assigns all todos as @todos" do
+        get :index, {}, valid_session
+        expect(assigns(:todos)).to eq([todo])
+      end
+    end
+
   end
 
   describe "GET #show" do
@@ -55,7 +70,7 @@ RSpec.describe TodosController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new todo as @todo" do
-      get :new, {}, valid_session
+      get :new, {user_id: 1}, valid_session
       expect(assigns(:todo)).to be_a_new(Todo)
     end
   end
@@ -71,30 +86,30 @@ RSpec.describe TodosController, type: :controller do
     context "with valid params" do
       it "creates a new Todo" do
         expect {
-          post :create, :todo => valid_attributes
+          post :create, :todo => valid_attributes, user_id: valid_attributes[:user_id]
         }.to change(Todo, :count).by(1)
       end
 
       it "assigns a newly created todo as @todo" do
-        post :create, {:todo => valid_attributes}, valid_session
+        post :create, {:todo => valid_attributes,user_id: valid_attributes[:user_id]}, valid_session
         expect(assigns(:todo)).to be_a(Todo)
         expect(assigns(:todo)).to be_persisted
       end
 
       it "redirects to the created todo" do
-        post :create, {:todo => valid_attributes}, valid_session
+        post :create, {:todo => valid_attributes,user_id: valid_attributes[:user_id]}, valid_session
         expect(response).to redirect_to(Todo.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved todo as @todo" do
-        post :create, {:todo => invalid_attributes}, valid_session
+        post :create, {:todo => invalid_attributes, user_id: valid_attributes[:user_id]}, valid_session
         expect(assigns(:todo)).to be_a_new(Todo)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:todo => invalid_attributes}, valid_session
+        post :create, {:todo => invalid_attributes, user_id: valid_attributes[:user_id]}, valid_session
         expect(response).to render_template("new")
       end
     end

@@ -8,7 +8,7 @@ RSpec.describe TodosController, type: :routing do
     end
 
     it "routes to #new" do
-      expect(:get => "/todos/new").to route_to("todos#new")
+      expect(:get => "users/1/todos/new").to route_to("todos#new", :user_id => '1')
     end
 
     it "routes to #show" do
@@ -20,7 +20,7 @@ RSpec.describe TodosController, type: :routing do
     end
 
     it "routes to #create" do
-      expect(:post => "/todos").to route_to("todos#create")
+      expect(:post => "users/1/todos").to route_to("todos#create", :user_id => '1')
     end
 
     it "routes to #update" do

@@ -1,10 +1,14 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, only: [:index,]
   respond_to :html, :json
 
   def index
-    @todos = Todo.all
+    if @user
+      @todos = @user.todos
+    else
+      @todos = Todo.all
+    end
     respond_with(@todos)
   end
 
@@ -39,6 +43,10 @@ class TodosController < ApplicationController
   private
     def set_todo
       @todo = Todo.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id]) rescue nil
     end
 
     def todo_params
