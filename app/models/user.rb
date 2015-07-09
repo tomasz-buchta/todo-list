@@ -36,12 +36,4 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  embeds_many :todos do
-    def finished
-      where(completion: 100)
-    end
-    # def unfinished
-    #   where(completion: )
-    # end
-  end
 end
